@@ -58,7 +58,7 @@ class RandBot(interface.Bot):
 
         # x, y = state["position"]
 
-        x_res = 10
+        x_res = -10
         y_res = 10
 
         x_move = 0
