@@ -55,25 +55,8 @@ class RandBot(interface.Bot):
 
         lh = state["lighthouses"]
 
-        faros = []
-        distancias = []
-        faros_cercanos = []
-        for i in lh:
-            d_x1 = abs(x - i.position[0])
-            d_y1 = abs(y - i.position[1])
-            dist = math.sqrt(d_x1 ^ 2 + d_y1 ^ 2)
-            distancias.append(dist)
-
-        copia = distancias.copy()
-
-        min1 = np.amin(copia)
-        i1 = copia.index(min1)
-        copia.index(min1).replace(1000)
-
-        faros_cercanos.append(lh[i1])
-
-        x_res = x - faros_cercanos[0].position[0]
-        y_res = y - faros_cercanos[0].position[1]
+        x_res = x - lh[0].position[0]
+        y_res = y - lh[0].position[1]
         x_move = 0
         y_move = 0
 
@@ -82,7 +65,7 @@ class RandBot(interface.Bot):
 
         if y_res < 0:
             y_move = -1
-            
+
         if x_res > 0:
             x_move = 1
 
