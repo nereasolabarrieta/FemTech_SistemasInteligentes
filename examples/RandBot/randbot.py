@@ -55,19 +55,12 @@ class RandBot(interface.Bot):
 
         distancias = []
 
-        x_res = x - lighthouses[0].position[0]
-        y_res = y - lighthouses[1].position[1]
+        x_res = x - (lighthouses[0].position[0])
+        y_res = y - (lighthouses[1].position[1])
         x_move = 0
         y_move = 0
 
-        if x_res < 0:
-            x_move = -1
-        elif y_res < 0:
-            y_move = -1
-        elif x_res > 0:
-            x_move = 1
-        elif y_res > 0:
-            y_move = 1
+
 
         move = (x_move, y_move)
         return move
