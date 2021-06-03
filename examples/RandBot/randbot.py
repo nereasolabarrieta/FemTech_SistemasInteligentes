@@ -58,21 +58,7 @@ class RandBot(interface.Bot):
 
         x_res = x - x_l
         y_res = y - y_l
-
-        x_move = 0
-        y_move = 0
-
-        if x_res < 0:
-            x_move = -1
-        if y_res < 0:
-            y_move = -1
-        if x_res > 0:
-            x_move = 1
-        if y_res > 0:
-            y_move = 1
-
-        move = (x_move, y_move)
-        return move
+        return x_res, y_res
 
 
 if __name__ == "__main__":
