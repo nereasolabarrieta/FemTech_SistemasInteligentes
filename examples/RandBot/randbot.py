@@ -6,61 +6,60 @@ import numpy as np
 import interface
 
 
-def decision_mov(x, y, lighthouses):
-
-    faros = []
-    distancias=[]
-    faros_cercanos = []
-    for i in lighthouses:
-        d_x1 = abs(x - i.position[0])
-        d_y1 = abs(y - i.position[1])
-        dist = math.sqrt(d_x1 ^ 2 + d_y1 ^ 2)
-        distancias.append(dist)
-
-    copia = distancias.copy()
-
-    min1 = np.amin(copia)
-    i1 = copia.index(min1)
-    copia.index(min1).replace(1000)
-
-    min2 = np.amin(copia)
-    i2 = copia.index(min2)
-    copia.index(min2).replace(1000)
-
-    min3 = np.amin(copia)
-    i3 = copia.index(min1)
-    copia.index(min3).replace(1000)
-
-    faros_cercanos.append(lighthouses[i1])
-    faros_cercanos.append(lighthouses[i2])
-    faros_cercanos.append(lighthouses[i3])
-
-    faro = faros_cercanos[0]
-    for f in faros_cercanos:
-        if f.energy < faro.energy:
-            faro = f
-
-    x_res = x - faro.position[0]
-    y_res = y - faro.position[1]
-    x_move = 0
-    y_move = 0
-
-    if x_res < 0:
-        x_move = -1
-    elif y_res < 0:
-        y_move = -1
-    elif x_res > 0:
-        x_move = 1
-    elif y_res > 0:
-        y_move = 1
-
-    move = (x_move, y_move)
-    return move
-
-
 class RandBot(interface.Bot):
     """Bot que juega aleatoriamente."""
     NAME = "RandBot"
+
+    def decision_mov(self, x, y, lighthouses):
+
+        faros = []
+        distancias=[]
+        faros_cercanos = []
+        for i in lighthouses:
+            d_x1 = abs(x - i.position[0])
+            d_y1 = abs(y - i.position[1])
+            dist = math.sqrt(d_x1 ^ 2 + d_y1 ^ 2)
+            distancias.append(dist)
+
+        copia = distancias.copy()
+
+        min1 = np.amin(copia)
+        i1 = copia.index(min1)
+        copia.index(min1).replace(1000)
+
+        min2 = np.amin(copia)
+        i2 = copia.index(min2)
+        copia.index(min2).replace(1000)
+
+        min3 = np.amin(copia)
+        i3 = copia.index(min1)
+        copia.index(min3).replace(1000)
+
+        faros_cercanos.append(lighthouses[i1])
+        faros_cercanos.append(lighthouses[i2])
+        faros_cercanos.append(lighthouses[i3])
+
+        faro = faros_cercanos[0]
+        for f in faros_cercanos:
+            if f.energy < faro.energy:
+                faro = f
+
+        x_res = x - faro.position[0]
+        y_res = y - faro.position[1]
+        x_move = 0
+        y_move = 0
+
+        if x_res < 0:
+            x_move = -1
+        elif y_res < 0:
+            y_move = -1
+        elif x_res > 0:
+            x_move = 1
+        elif y_res > 0:
+            y_move = 1
+
+        move = (x_move, y_move)
+        return move
 
     def play(self, state):
         """Jugar: llamado cada turno.
@@ -96,7 +95,7 @@ class RandBot(interface.Bot):
                 return self.attack(energy)
 
         # Mover aleatoriamente
-        move = decision_mov(cx, cy, lighthouses)
+        move = self.decision_mov(cx, cy, lighthouses)
         #moves = ((-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1))
         # Determinar movimientos válidos
         #moves = [(x, y) for x, y in moves if self.map[cy + y][cx + x]]
