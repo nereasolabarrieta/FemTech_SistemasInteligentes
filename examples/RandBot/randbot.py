@@ -44,22 +44,22 @@ class RandBot(interface.Bot):
                 return self.attack(energy)
 
         # Mover aleatoriamente
-        move = self.decision_mov()
+        move = self.decision_mov(state)
         # moves = ((-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1))
         # Determinar movimientos válidos
         # moves = [(x, y) for x, y in moves if self.map[cy + y][cx + x]]
         # move = random.choice(moves)
         return self.move(*move)
 
-    def decision_mov(self):
+    def decision_mov(self, state):
 
-        # lh = state["lighthouses"]
-        # x_l, y_l = lh[20]["position"]
+        lh = state["lighthouses"]
+        x_l, y_l = lh[1]["position"]
 
-        # x, y = state["position"]
+        x, y = state["position"]
 
-        x_res = -10
-        y_res = -10
+        x_res = x - x_l
+        y_res = y - y_l
 
         x_move = 0
         y_move = 0
