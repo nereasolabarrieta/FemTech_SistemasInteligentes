@@ -23,22 +23,22 @@ def decision_mov(x, y, lighthouses):
     i1 = copia.index(min1)
     copia.index(min1).replace(1000)
 
-    #min2 = np.amin(copia)
-    #i2 = copia.index(min2)
-    #copia.index(min2).replace(1000)
+    min2 = np.amin(copia)
+    i2 = copia.index(min2)
+    copia.index(min2).replace(1000)
 
-    #min3 = np.amin(copia)
-    #i3 = copia.index(min1)
-    #copia.index(min3).replace(1000)
+    min3 = np.amin(copia)
+    i3 = copia.index(min1)
+    copia.index(min3).replace(1000)
 
-    #faros_cercanos.append(lighthouses[i1])
-    #faros_cercanos.append(lighthouses[i2])
-    #faros_cercanos.append(lighthouses[i3])
+    faros_cercanos.append(lighthouses[i1])
+    faros_cercanos.append(lighthouses[i2])
+    faros_cercanos.append(lighthouses[i3])
 
-    #faro = faros_cercanos[0]
-    #for f in faros_cercanos:
-    #    if f.energy < faro.energy:
-    #        faro = f
+    faro = faros_cercanos[0]
+    for f in faros_cercanos:
+        if f.energy < faro.energy:
+            faro = f
 
     x_res = x - lighthouses[i1].position[0]
     y_res = y - lighthouses[i1].position[1]
