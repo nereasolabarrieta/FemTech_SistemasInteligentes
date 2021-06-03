@@ -53,8 +53,10 @@ class RandBot(interface.Bot):
 
     def decision_mov(self, x, y, lighthouses):
 
-        x_res = 0
-        y_res = 0
+        x_l, y_l = lighthouses[0].position
+        x_res = x - x_l
+        y_res = y - y_l
+        
         x_move = 0
         y_move = 0
 
