@@ -51,17 +51,14 @@ class RandBot(interface.Bot):
         # move = random.choice(moves)
         return self.move(*move)
 
-    def decision_mov(self,state):
+    def decision_mov(self, state):
 
         lh = state["lighthouses"]
         x_l, y_l = lh[20]["position"]
 
         x, y = state["position"]
-        x_res = x - x_l
-        y_res = y - y_l
-
-        x_move = 0
-        y_move = 0
+        x_res = 10
+        y_res = 10
 
         if x_res < 0:
             x_move = -1
