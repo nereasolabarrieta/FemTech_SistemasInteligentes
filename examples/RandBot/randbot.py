@@ -56,7 +56,6 @@ class RandBot(interface.Bot):
         lh = state["lighthouses"]
         x_l, y_l = lh[0]["position"]
 
-        print(lighthouses[0]["position"])
         #x_res = x - x_l
         #y_res = y - y_l
 
