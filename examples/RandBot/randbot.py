@@ -60,14 +60,17 @@ class RandBot(interface.Bot):
         x_res = 10
         y_res = 10
 
+        x_move = 0
+        y_move = 0
+
         if x_res < 0:
             x_move = -1
-        if y_res < 0:
-            y_move = -1
-        if x_res > 0:
+        elif x_res > 0:
             x_move = 1
         if y_res > 0:
             y_move = 1
+        elif y_res < 0:
+            y_move = -1
 
         move = (x_move, y_move)
         return move
