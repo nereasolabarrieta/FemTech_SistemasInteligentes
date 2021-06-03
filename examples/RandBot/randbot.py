@@ -44,7 +44,7 @@ class RandBot(interface.Bot):
                 return self.attack(energy)
 
         # Mover aleatoriamente
-        move = self.decision_mov(self)
+        move = self.decision_mov()
         # moves = ((-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1))
         # Determinar movimientos válidos
         # moves = [(x, y) for x, y in moves if self.map[cy + y][cx + x]]
@@ -63,8 +63,6 @@ class RandBot(interface.Bot):
 
         x_move = 0
         y_move = 0
-
-
 
         move = (x_move, y_move)
         return move
