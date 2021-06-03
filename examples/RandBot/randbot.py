@@ -40,8 +40,8 @@ def decision_mov(x, y, lighthouses):
         if f.energy < faro.energy:
             faro = f
 
-    x_res = x - lighthouses[i1].position[0]
-    y_res = y - lighthouses[i1].position[1]
+    x_res = x - faro.position[0]
+    y_res = y - faro.position[1]
     x_move = 0
     y_move = 0
 
