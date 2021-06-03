@@ -53,10 +53,8 @@ class RandBot(interface.Bot):
 
     def decision_mov(self, x, y, lighthouses):
 
-        distancias = []
-
-        x_res = x - (lighthouses[0].position[0])
-        y_res = y - (lighthouses[1].position[1])
+        x_res = 0
+        y_res = 0
         x_move = 0
         y_move = 0
 
