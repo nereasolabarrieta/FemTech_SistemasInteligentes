@@ -27,25 +27,25 @@ class RandBot(interface.Bot):
         i1 = copia.index(min1)
         copia.index(min1).replace(1000)
 
-        min2 = np.amin(copia)
-        i2 = copia.index(min2)
-        copia.index(min2).replace(1000)
+        #min2 = np.amin(copia)
+        #i2 = copia.index(min2)
+        #copia.index(min2).replace(1000)
 
-        min3 = np.amin(copia)
-        i3 = copia.index(min1)
-        copia.index(min3).replace(1000)
+        #min3 = np.amin(copia)
+        #i3 = copia.index(min1)
+        #copia.index(min3).replace(1000)
 
         faros_cercanos.append(lighthouses[i1])
-        faros_cercanos.append(lighthouses[i2])
-        faros_cercanos.append(lighthouses[i3])
+        #faros_cercanos.append(lighthouses[i2])
+        #faros_cercanos.append(lighthouses[i3])
 
-        faro = faros_cercanos[0]
-        for f in faros_cercanos:
-            if f.energy < faro.energy:
-                faro = f
+        #faro = faros_cercanos[0]
+        #for f in faros_cercanos:
+        #    if f.energy < faro.energy:
+        #        faro = f
 
-        x_res = x - faro.position[0]
-        y_res = y - faro.position[1]
+        x_res = x - faros_cercanos.position[0]
+        y_res = y - faros_cercanos.position[1]
         x_move = 0
         y_move = 0
 
