@@ -53,8 +53,8 @@ class RandBot(interface.Bot):
 
     def decision_mov(self, state):
 
-        lh = state["lighthouses"]
-        x_l, y_l = lh[10]["position"]
+        for lh in state["lighthouses"]:
+            x_l, y_l = lh["position"]
 
         x, y = state["position"]
 
@@ -66,12 +66,14 @@ class RandBot(interface.Bot):
 
         if x_res > 0:
             x_move = 1
-        elif x_res < 0:
+
+        if x_res < 0:
             x_move = -1
 
         if y_res > 0:
             y_move = 1
-        elif y_res < 0:
+
+        if y_res < 0:
             y_move = -1
 
         return x_move, y_move
