@@ -76,8 +76,8 @@ class RandBot(interface.Bot):
         for lh in state["lighthouses"]:
             x_l, y_l = lh["position"]
 
-        y_res = cy - y_l
-        x_res = cx - x_l
+        y_res = cy - 0
+        x_res = cx - 0
 
         if x_res > 0 and y_res > 0:
             move = (1, 1)
