@@ -24,10 +24,8 @@ def decision_mov(cx, cy, state):
         tupla = [i, dist]
         distancias.append(tupla)
 
-    lista_ordenada = distancias.sort(key=lambda tup: tup[1])
+    lista_ordenada = distancias.sort(key=lambda tup: tup[2])
 
-    lh = lista_ordenada[0][0]
-    x_l, y_l = lh["position"]
 
     if cy > y_l and cx > x_l:
         move = (-1, -1)
