@@ -73,11 +73,11 @@ class RandBot(interface.Bot):
                 return self.attack(energy)
 
         # Mover aleatoriamente
-        for lh in state["lighthouses"]:
-            x_l, y_l = lh["position"]
+        lh = (state["lighthouses"])[0]
+        x_l, y_l = lh["position"]
 
-        y_res = cy - 0
-        x_res = cx - 0
+        y_res = cy - 2
+        x_res = cx - 5
 
         if x_res > 0 and y_res > 0:
             move = (1, 1)
