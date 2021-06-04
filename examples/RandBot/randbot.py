@@ -16,7 +16,7 @@ def decision_mov(state):
 
     x_l, y_l = state["lighthouses"][0]["position"]
 
-    x, y = 0, 0
+    x, y = state["position"]
 
     if x == x_l:
         y_res = y-y_l
