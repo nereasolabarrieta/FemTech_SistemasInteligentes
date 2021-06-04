@@ -74,8 +74,7 @@ class RandBot(interface.Bot):
         elif y_res < 0:
             y_move = -1
 
-        move = (x_move, y_move)
-        return move
+        return x_move, y_move
 
 
 if __name__ == "__main__":
