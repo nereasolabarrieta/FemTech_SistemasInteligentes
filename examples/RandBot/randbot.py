@@ -82,11 +82,8 @@ class RandBot(interface.Bot):
             dist = math.sqrt(d_x1 ^ 2 + d_y1 ^ 2)
             distancias.append(dist)
 
-        copia = distancias.copy()
-
-        min1 = np.amin(copia)
-        i1 = copia.index(min1)
-        copia.index(min1).replace(1000)
+        min1 = np.amin(distancias)
+        i1 = distancias.index(min1)
 
         x_l, y_l = (state["lighthouses"])[i1]
 
@@ -106,8 +103,6 @@ class RandBot(interface.Bot):
             move = (0, -1)
         elif cy < y_l and cx == x_l:
             move = (0, 1)
-
-
 
         # moves = ((-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1))
         # Determinar movimientos válidos
