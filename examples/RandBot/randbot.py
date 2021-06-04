@@ -10,7 +10,6 @@ import interface
 
 
 def decision_mov(cx, cy, state):
-
     distancias = []
     faros_cercanos = []
     for i in (state["lighthouses"]):
@@ -26,24 +25,8 @@ def decision_mov(cx, cy, state):
     i1 = copia.index(min1)
     copia.index(min1).replace(1000)
 
-    min2 = np.amin(copia)
-    i2 = copia.index(min2)
-    copia.index(min2).replace(1000)
-
-    min3 = np.amin(copia)
-    i3 = copia.index(min1)
-    copia.index(min3).replace(1000)
-
-    faros_cercanos.append((state["lighthouses"])[i1])
-    faros_cercanos.append((state["lighthouses"])[i2])
-    faros_cercanos.append((state["lighthouses"])[i3])
-
-    faro = faros_cercanos[0]
-    for f in faros_cercanos:
-        if f["energy"] < faro["energy"]:
-            faro = f
-
-    x_l, y_l = faro["position"]
+    l = (state["lighthouses"])[i1]
+    x_l, y_l = l["position"]
 
     if cy > y_l and cx > x_l:
         move = (-1, -1)
