@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*-
 import math
 import random
+import sys
+
 import numpy as np
 import interface
 
@@ -10,9 +12,10 @@ def decision_mov(state):
     x_l, y_l = state["lighthouses"][0]["position"]
 
     x, y = state["position"]
-    print("AQUI")
+    print("YAQUI")
     print(x, y)
     print(x_l, y_l)
+    sys.stdout.flush()
     x_res = x - x_l
     y_res = y - y_l
 
