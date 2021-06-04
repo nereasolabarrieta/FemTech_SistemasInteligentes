@@ -8,31 +8,35 @@ import numpy as np
 import interface
 
 
+class CommError(Exception):
+    pass
+
+
 def decision_mov(state):
-    x_l, y_l = state["lighthouses"][0]["position"]
-
     x, y = state["position"]
-    print("YAQUI")
-    print(x, y)
-    print(x_l, y_l)
-    sys.stdout.flush()
-    x_res = x - x_l
-    y_res = y - y_l
+    try:
+        x_l, y_l = state["lighthouses"][0]["position"]
 
-    x_move = 0
-    y_move = 0
+        x_res = x - x_l
+        y_res = y - y_l
 
-    if x_res > 0:
-        x_move = 1
+        x_move = 0
+        y_move = 0
 
-    if x_res < 0:
-        x_move = -1
+        if x_res > 0:
+            x_move = 1
 
-    if y_res > 0:
-        y_move = 1
+        if x_res < 0:
+            x_move = -1
 
-    if y_res < 0:
-        y_move = -1
+        if y_res > 0:
+            y_move = 1
+
+        if y_res < 0:
+            y_move = -1
+
+    except:
+        raise CommError(x, y)
 
     return x_move, y_move
 
