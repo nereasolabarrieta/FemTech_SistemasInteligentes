@@ -87,6 +87,18 @@ class RandBot(interface.Bot):
             move = (-1, 1)
         elif x_res > 0 and y_res < 0:
             move = (1, -1)
+        elif x_res == 0 and y_res < 0:
+            move = (0, -1)
+        elif x_res == 0 and y_res > 0:
+            move = (0, 1)
+        elif x_res == 0 and y_res < 0:
+            move = (0, -1)
+        elif x_res == 0 and y_res > 0:
+            move = (0, 1)
+        elif x_res > 0 and y_res == 0:
+            move = (1, 0)
+        elif x_res < 0 and y_res == 0:
+            move = (-1, 0)
 
 
         # moves = ((-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1))
