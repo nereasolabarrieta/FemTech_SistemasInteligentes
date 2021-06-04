@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+import json
 import math
 import random
 import sys
@@ -8,15 +9,19 @@ import numpy as np
 import interface
 
 
-class CommError(Exception):
-    pass
-
+def _send(self, msg):
+    sys.stdout.write(json.dumps(msg) + "\n")
+    sys.stdout.flush()
 
 def decision_mov(state):
 
     x_l, y_l = state["lighthouses"][0]["position"]
 
     x, y = state["position"]
+    _send({"x": x})
+    _send({"y": y})
+    _send({"x_l": x_l})
+    _send({"y_l": y_l})
 
     if x == x_l:
         y_res = y-y_l
