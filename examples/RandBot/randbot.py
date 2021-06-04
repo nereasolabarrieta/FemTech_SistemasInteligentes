@@ -79,26 +79,23 @@ class RandBot(interface.Bot):
         y_res = cy - 2
         x_res = cx - 5
 
-        if x_res > 0 and y_res > 0:
-            move = (1, 1)
-        elif x_res < 0 and y_res < 0:
-            move = (-1,-1)
-        elif x_res < 0 and y_res > 0:
+        if cy > y_l and cx > x_l:
+            move = (-1, -1)
+        elif cy > y_l and cx < x_l:
+            move = (1,-1)
+        elif cy < y_l and cx > x_l:
             move = (-1, 1)
-        elif x_res > 0 and y_res < 0:
-            move = (1, -1)
-        elif x_res == 0 and y_res < 0:
-            move = (0, -1)
-        elif x_res == 0 and y_res > 0:
-            move = (0, 1)
-        elif x_res == 0 and y_res < 0:
-            move = (0, -1)
-        elif x_res == 0 and y_res > 0:
-            move = (0, 1)
-        elif x_res > 0 and y_res == 0:
-            move = (1, 0)
-        elif x_res < 0 and y_res == 0:
+        elif cy < y_l and cx < x_l:
+            move = (1, 1)
+        elif cy == y_l and cx > x_l:
             move = (-1, 0)
+        elif cy == y_l and cx < x_l:
+            move = (1, 0)
+        elif cy > y_l and cx == x_l:
+            move = (0, -1)
+        elif cy < y_l and cx == x_l:
+            move = (0, 1)
+
 
 
         # moves = ((-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1))
