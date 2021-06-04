@@ -73,7 +73,7 @@ class RandBot(interface.Bot):
                 return self.attack(energy)
 
         # Mover aleatoriamente
-        lh = (state["lighthouses"])[0]
+        lh = (state["lighthouses"])[1]
         x_l, y_l = lh["position"]
 
         y_res = cy - 2
