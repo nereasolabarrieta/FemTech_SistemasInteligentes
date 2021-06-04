@@ -18,7 +18,7 @@ def decision_mov(cx, cy, state, player_num):
             d_y1 = abs(cy - y_l)
             dist = math.sqrt(d_x1 ^ 2 + d_y1 ^ 2)
             distancias.append(dist)
-        elif i["owner"] == player_num):
+        elif i["owner"] == player_num:
             distancias.append(100)
         else:
             distancias.append(100)
