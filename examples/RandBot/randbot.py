@@ -9,15 +9,17 @@ import numpy as np
 import interface
 
 
-def decision_mov(cx, cy, state):
+def decision_mov(cx, cy, state, player_num):
     distancias = []
     for i in (state["lighthouses"]):
         x_l, y_l = i["position"]
-        if x_l != cx and y_l != cy:
+        if x_l != cx and y_l != cy and i["owner"] != player_num:
             d_x1 = abs(cx - x_l)
             d_y1 = abs(cy - y_l)
             dist = math.sqrt(d_x1 ^ 2 + d_y1 ^ 2)
             distancias.append(dist)
+        elif i["owner"] == player_num):
+            distancias.append(100)
         else:
             distancias.append(100)
 
@@ -85,7 +87,7 @@ class RandBot(interface.Bot):
                 energy = random.randrange(state["energy"] + 1)
                 return self.attack(energy)
 
-        move = decision_mov(cx, cy, state)
+        move = decision_mov(cx, cy, state, self.player_num)
         return self.move(*move)
 
 
