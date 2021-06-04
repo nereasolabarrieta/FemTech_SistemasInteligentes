@@ -9,26 +9,13 @@ import numpy as np
 import interface
 
 
-def _send(msg):
-    sys.stdout.write(json.dumps(msg) + "\n")
-    sys.stdout.flush()
-
-
 def decision_mov(state):
     x_l, y_l = state["lighthouses"][0]["position"]
 
     x, y = state["position"]
-    _send({"x": x})
 
-    if x == x_l:
-        y_res = y - y_l
-    else:
-        x_res = x - x_l
-
-    if y == y_l:
-        x_res = x - x_l
-    else:
-        y_res = y - y_l
+    y_res = y - y_l
+    x_res = x - x_l
 
     x_move = 0
     y_move = 0
@@ -86,12 +73,34 @@ class RandBot(interface.Bot):
                 return self.attack(energy)
 
         # Mover aleatoriamente
-        move_x, move_y = decision_mov(state)
+        for lh in state["lighthouses"]:
+            x_l, y_l = lh["position"]
+
+        x, y = state["position"]
+
+        y_res = y - y_l
+        x_res = x - x_l
+
+        x_move = 0
+        y_move = 0
+
+        if x_res > 0:
+            x_move = 1
+
+        if x_res < 0:
+            x_move = -1
+
+        if y_res > 0:
+            y_move = 1
+
+        if y_res < 0:
+            y_move = -1
+
         # moves = ((-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1))
         # Determinar movimientos válidos
         # moves = [(x, y) for x, y in moves if self.map[cy + y][cx + x]]
         # move = random.choice(moves)
-        return self.move(move_x, move_y)
+        return self.move(x_move, y_move)
 
 
 if __name__ == "__main__":
