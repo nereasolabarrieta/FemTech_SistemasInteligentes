@@ -7,11 +7,12 @@ import interface
 
 
 def decision_mov(state):
-
     x_l, y_l = state["lighthouses"][0]["position"]
 
     x, y = state["position"]
-
+    print("AQUI")
+    print(x, y)
+    print(x_l, y_l)
     x_res = x - x_l
     y_res = y - y_l
 
@@ -71,12 +72,12 @@ class RandBot(interface.Bot):
                 return self.attack(energy)
 
         # Mover aleatoriamente
-        #move_x, move_y = decision_mov(state)
-        moves = ((-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1))
+        move_x, move_y = decision_mov(state)
+        # moves = ((-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1))
         # Determinar movimientos válidos
-        moves = [(x, y) for x, y in moves if self.map[cy + y][cx + x]]
-        move = random.choice(moves)
-        return self.move(*move)
+        # moves = [(x, y) for x, y in moves if self.map[cy + y][cx + x]]
+        # move = random.choice(moves)
+        return self.move(move_x, move_y)
 
 
 if __name__ == "__main__":
