@@ -71,12 +71,12 @@ class RandBot(interface.Bot):
                 return self.attack(energy)
 
         # Mover aleatoriamente
-        move_x, move_y = decision_mov(state)
-        # moves = ((-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1))
+        #move_x, move_y = decision_mov(state)
+        moves = ((-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1))
         # Determinar movimientos válidos
-        # moves = [(x, y) for x, y in moves if self.map[cy + y][cx + x]]
-        # move = random.choice(moves)
-        return self.move(move_x, move_y)
+        moves = [(x, y) for x, y in moves if self.map[cy + y][cx + x]]
+        move = random.choice(moves)
+        return self.move(*move)
 
 
 if __name__ == "__main__":
