@@ -21,7 +21,7 @@ def decision_mov(cx, cy, state):
         d_x1 = abs(cx - x_l)
         d_y1 = abs(cy - y_l)
         dist = math.sqrt(d_x1 ^ 2 + d_y1 ^ 2)
-        tupla = [i, dist]
+        tupla = tuple(i, dist)
         distancias.append(tupla)
 
     lista_ordenada = distancias.sort(key=lambda tup: tup[2])
