@@ -9,11 +9,8 @@ import numpy as np
 import interface
 
 
-def myFunc(e):
-    return len(e)
-
-
 def decision_mov(cx, cy, state):
+
     distancias = []
     faros_cercanos = []
     for i in (state["lighthouses"]):
@@ -21,11 +18,32 @@ def decision_mov(cx, cy, state):
         d_x1 = abs(cx - x_l)
         d_y1 = abs(cy - y_l)
         dist = math.sqrt(d_x1 ^ 2 + d_y1 ^ 2)
-        tupla = dict(tuple(i, dist))
-        distancias.append(tupla)
+        distancias.append(dist)
 
-    #lista_ordenada = distancias.sort(key=lambda tup: tup[2])
+    copia = distancias.copy()
 
+    min1 = np.amin(copia)
+    i1 = copia.index(min1)
+    copia.index(min1).replace(1000)
+
+    min2 = np.amin(copia)
+    i2 = copia.index(min2)
+    copia.index(min2).replace(1000)
+
+    min3 = np.amin(copia)
+    i3 = copia.index(min1)
+    copia.index(min3).replace(1000)
+
+    faros_cercanos.append((state["lighthouses"])[i1])
+    faros_cercanos.append((state["lighthouses"])[i2])
+    faros_cercanos.append((state["lighthouses"])[i3])
+
+    faro = faros_cercanos[0]
+    for f in faros_cercanos:
+        if f["energy"] < faro["energy"]:
+            faro = f
+
+    x_l, y_l = faro["position"]
 
     if cy > y_l and cx > x_l:
         move = (-1, -1)
