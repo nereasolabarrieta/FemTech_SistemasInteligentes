@@ -9,7 +9,7 @@ import numpy as np
 import interface
 
 
-def _send(self, msg):
+def _send(msg):
     sys.stdout.write(json.dumps(msg) + "\n")
     sys.stdout.flush()
 
@@ -19,7 +19,6 @@ def decision_mov(state):
 
     x, y = state["position"]
     _send({"x": x})
-    _send({"y": y})
 
     if x == x_l:
         y_res = y - y_l
