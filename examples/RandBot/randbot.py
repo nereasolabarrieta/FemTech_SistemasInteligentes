@@ -81,8 +81,6 @@ class RandBot(interface.Bot):
 
         if x_res > 0 and y_res > 0:
             move = (1, 1)
-        elif x_res < 0 and y_res < 0:
-            move = (-1, -1)
         elif x_res < 0 and y_res > 0:
             move = (-1, 1)
         elif x_res > 0 and y_res < 0:
