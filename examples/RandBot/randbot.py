@@ -13,30 +13,28 @@ class CommError(Exception):
 
 
 def decision_mov(state):
-    x, y = state["position"]
-    try:
-        x_l, y_l = state["lighthouses"][0]["position"]
 
-        x_res = x - x_l
-        y_res = y - y_l
+    x_l, y_l = state["lighthouses"][0]["position"]
 
-        x_move = 0
-        y_move = 0
+    x, y = 0, 0
 
-        if x_res > 0:
-            x_move = 1
+    x_res = x - x_l
+    y_res = y - y_l
 
-        if x_res < 0:
-            x_move = -1
+    x_move = 0
+    y_move = 0
 
-        if y_res > 0:
-            y_move = 1
+    if x_res > 0:
+        x_move = 1
 
-        if y_res < 0:
-            y_move = -1
+    if x_res < 0:
+        x_move = -1
 
-    except:
-        raise CommError(x, y)
+    if y_res > 0:
+        y_move = 1
+
+    if y_res < 0:
+        y_move = -1
 
     return x_move, y_move
 
