@@ -9,12 +9,21 @@ import numpy as np
 import interface
 
 
-def decision_mov(cx,cy,state):
-    lh = (state["lighthouses"])[1]
-    x_l, y_l = lh["position"]
+def decision_mov(cx, cy, state):
 
-    y_res = cy - 2
-    x_res = cx - 5
+    distancias = []
+    faros_cercanos = []
+    for i in (state["lighthouses"]):
+        x_l, y_l = i["position"]
+        d_x1 = abs(cx - x_l)
+        d_y1 = abs(cy - y_l)
+        dist = math.sqrt(d_x1 ^ 2 + d_y1 ^ 2)
+        distancias.append(dist)
+
+    min1 = np.amin(distancias)
+    i1 = distancias.index(min1)
+    lh = (state["lighthouses"])[i1]
+    x_l, y_l = lh["position"]
 
     if cy > y_l and cx > x_l:
         move = (-1, -1)
@@ -73,12 +82,7 @@ class RandBot(interface.Bot):
                 energy = random.randrange(state["energy"] + 1)
                 return self.attack(energy)
 
-       
         move = decision_mov(cx, cy, state)
-        # moves = ((-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1))
-        # Determinar movimientos válidos
-        # moves = [(x, y) for x, y in moves if self.map[cy + y][cx + x]]
-        # move = random.choice(moves)
         return self.move(*move)
 
 
