@@ -9,30 +9,31 @@ import numpy as np
 import interface
 
 
-def decision_mov(state):
-    x_l, y_l = state["lighthouses"][0]["position"]
+def decision_mov(cx,cy,state):
+    lh = (state["lighthouses"])[1]
+    x_l, y_l = lh["position"]
 
-    x, y = state["position"]
+    y_res = cy - 2
+    x_res = cx - 5
 
-    y_res = y - y_l
-    x_res = x - x_l
+    if cy > y_l and cx > x_l:
+        move = (-1, -1)
+    elif cy > y_l and cx < x_l:
+        move = (1, -1)
+    elif cy < y_l and cx > x_l:
+        move = (-1, 1)
+    elif cy < y_l and cx < x_l:
+        move = (1, 1)
+    elif cy == y_l and cx > x_l:
+        move = (-1, 0)
+    elif cy == y_l and cx < x_l:
+        move = (1, 0)
+    elif cy > y_l and cx == x_l:
+        move = (0, -1)
+    elif cy < y_l and cx == x_l:
+        move = (0, 1)
 
-    x_move = 0
-    y_move = 0
-
-    if x_res > 0:
-        x_move = 1
-
-    if x_res < 0:
-        x_move = -1
-
-    if y_res > 0:
-        y_move = 1
-
-    if y_res < 0:
-        y_move = -1
-
-    return x_move, y_move
+    return move
 
 
 class RandBot(interface.Bot):
@@ -72,38 +73,8 @@ class RandBot(interface.Bot):
                 energy = random.randrange(state["energy"] + 1)
                 return self.attack(energy)
 
-        # Mover aleatoriamente
-
-        distancias = []
-        for l in state["lighthouses"]:
-            x_l, y_l = l["position"]
-            d_x1 = abs(cx - x_l)
-            d_y1 = abs(cy - y_l)
-            dist = math.sqrt(d_x1 ^ 2 + d_y1 ^ 2)
-            distancias.append(dist)
-
-        min1 = np.amin(distancias)
-        i1 = distancias.index(min1)
-
-        x_l, y_l = (state["lighthouses"])[i1]
-
-        if cy > y_l and cx > x_l:
-            move = (-1, -1)
-        elif cy > y_l and cx < x_l:
-            move = (1,-1)
-        elif cy < y_l and cx > x_l:
-            move = (-1, 1)
-        elif cy < y_l and cx < x_l:
-            move = (1, 1)
-        elif cy == y_l and cx > x_l:
-            move = (-1, 0)
-        elif cy == y_l and cx < x_l:
-            move = (1, 0)
-        elif cy > y_l and cx == x_l:
-            move = (0, -1)
-        elif cy < y_l and cx == x_l:
-            move = (0, 1)
-
+       
+        move = decision_mov(cx, cy, state)
         # moves = ((-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1))
         # Determinar movimientos válidos
         # moves = [(x, y) for x, y in moves if self.map[cy + y][cx + x]]
