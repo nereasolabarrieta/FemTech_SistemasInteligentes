@@ -20,6 +20,7 @@ def decision_mov(cx, cy, state):
 
     min1 = np.amin(distancias)
     i1 = distancias.index(min1)
+    distancias.index(min1).replace(1000)
 
     l = (state["lighthouses"])[i1]
     x_l, y_l = l["position"]
