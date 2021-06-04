@@ -8,8 +8,7 @@ import interface
 
 def decision_mov(state):
 
-    for lh in state["lighthouses"]:
-        x_l, y_l = lh["position"]
+    x_l, y_l = state["lighthouses"][0]["position"]
 
     x, y = state["position"]
 
