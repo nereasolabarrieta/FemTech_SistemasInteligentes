@@ -79,26 +79,21 @@ class RandBot(interface.Bot):
         y_res = cy - y_l
         x_res = cx - x_l
 
-        x_move = 0
-        y_move = 0
+        if x_res > 0 and y_res > 0:
+            move = (1, 1)
+        elif x_res < 0 and y_res < 0:
+            move = (-1, -1)
+        elif x_res < 0 and y_res > 0:
+            move = (-1, 1)
+        elif x_res > 0 and y_res < 0:
+            move = (1, -1)
 
-        if x_res > 0:
-            x_move = 1
-
-        if x_res < 0:
-            x_move = -1
-
-        if y_res > 0:
-            y_move = 1
-
-        if y_res < 0:
-            y_move = -1
 
         # moves = ((-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1))
         # Determinar movimientos válidos
         # moves = [(x, y) for x, y in moves if self.map[cy + y][cx + x]]
         # move = random.choice(moves)
-        return self.move(x_move, y_move)
+        return self.move(*move)
 
 
 if __name__ == "__main__":
