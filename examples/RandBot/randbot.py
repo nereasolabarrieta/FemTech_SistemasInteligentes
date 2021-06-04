@@ -18,8 +18,15 @@ def decision_mov(state):
 
     x, y = 0, 0
 
-    x_res = x - x_l
-    y_res = y - y_l
+    if x == x_l:
+        y_res = y-y_l
+    else:
+        x_res = x-x_l
+
+    if y == y_l:
+        x_res = x-x_l
+    else:
+        y_res = y-y_l
 
     x_move = 0
     y_move = 0
