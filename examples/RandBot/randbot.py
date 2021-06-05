@@ -11,26 +11,11 @@ import interface
 
 def decision_energy(state, lighthouse):
     energia = 0
-    energias = []
-    for lh in (state["lighthouses"]):
-        energias.append(lh["energy"])
-
-    energias = energias.sort()
-    tamanio = len(energias)
-    mediana = 0
-    i = tamanio / 2
-    if i % 2 == 0:
-        a1 = energias.index(i)
-        a2 = energias.index(i-1)
-        mediana = (a1+a2)/2
-    else:
-        mediana = energias.index(i)
-
     if lighthouse["energy"] == 0:
-        energia = mediana + 100
+        energia =  100
     else:
         energia_faro = lighthouse["energy"]
-        energia = mediana + 100 + energia_faro
+        energia =  100 + energia_faro
 
     return energia
 
