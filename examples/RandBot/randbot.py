@@ -18,9 +18,13 @@ def decision_energy(state, lighthouse):
     #energias = energias.sort()
     mediana = stats.median(energias)
 
+    if lighthouse["energy"] == 0:
+        energia = 100 + mediana
+    else:
+        energia_faro = lighthouse["energy"]
+        energia = 100 + energia_faro + mediana
 
-
-    return mediana
+    return energia
 
 
 def decision_mov(cx, cy, state, player_num):
