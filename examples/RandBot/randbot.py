@@ -97,11 +97,11 @@ class RandBot(interface.Bot):
 
                     if possible_connections:
                         return self.connect(random.choice(possible_connections))
-
-            # Probabilidad 60%: recargar el faro
-            energy = decision_energy(state, lighthouses[(cx, cy)])
-            #energy = random.randrange(state["energy"] + 1)
-            return self.attack(energy)
+            if random.randrange(100) < 60:
+                # Probabilidad 60%: recargar el faro
+                energy = decision_energy(state, lighthouses[(cx, cy)])
+                #energy = random.randrange(state["energy"] + 1)
+                return self.attack(energy)
 
         move = decision_mov(cx, cy, state, self.player_num)
         return self.move(*move)
