@@ -4,14 +4,13 @@ import json
 import math
 import random
 import sys
-from array import array
 
 import numpy as np
 import interface
 
 
 def decision_mov(cx, cy, state, player_num):
-    distancias = array([])
+    distancias = []
     for i in (state["lighthouses"]):
         x_l, y_l = i["position"]
         if x_l != cx or y_l != cy:
