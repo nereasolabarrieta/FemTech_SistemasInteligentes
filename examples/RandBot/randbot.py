@@ -4,20 +4,24 @@ import json
 import math
 import random
 import sys
+from array import array
 
 import numpy as np
 import interface
 
 
 def decision_mov(cx, cy, state, player_num):
-    distancias = []
+    distancias = array([])
     for i in (state["lighthouses"]):
         x_l, y_l = i["position"]
         if x_l != cx or y_l != cy:
             if i["owner"] != player_num:
                 d_x1 = abs(cx - x_l)
                 d_y1 = abs(cy - y_l)
-                dist = math.sqrt(d_x1 ^ 2 + d_y1 ^ 2)
+                if d_x1 > d_y1:
+                    dist = d_x1
+                else:
+                    dist = d_y1
                 distancias.append(dist)
             else:
                 distancias.append(1000)
