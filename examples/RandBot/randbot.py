@@ -15,7 +15,7 @@ def decision_energy(state, lighthouse):
     for lh in (state["lighthouses"]):
         energias.append(lh["energy"])
 
-    energias = energias.sort()
+    #energias = energias.sort()
     mediana = stats.median(energias)
 
 
