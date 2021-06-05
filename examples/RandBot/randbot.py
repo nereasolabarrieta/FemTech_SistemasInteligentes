@@ -19,10 +19,10 @@ def decision_energy(state, lighthouse):
     mediana = stats.median(energias)
 
     if lighthouse["energy"] == 0:
-        energia = 100 + mediana
+        energia = 160 + mediana
     else:
         energia_faro = lighthouse["energy"]
-        energia = 100 + energia_faro + mediana
+        energia = 160 + energia_faro + mediana
 
     return energia
 
