@@ -15,7 +15,7 @@ def decision_energy(state, lighthouse):
     for lh in (state["lighthouses"]):
         energias.append(lh["energy"])
 
-    #energias = energias.sort()
+    energias = sorted(energias)
     mediana = stats.median(energias)
 
     if lighthouse["energy"] == 0:
