@@ -102,7 +102,7 @@ class RandBot(interface.Bot):
                         possible_connections.append(dest)
 
                     if possible_connections:
-                        return self.connect(random.choice(possible_connections))
+                        return self.connect(possible_connections[0])
 
             if lighthouses[(cx, cy)]["owner"] != self.player_num:
                 # Probabilidad 60%: recargar el faro
