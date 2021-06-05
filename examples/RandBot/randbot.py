@@ -11,11 +11,26 @@ import interface
 
 def decision_energy(state, lighthouse):
     energia = 0
+    energias = []
+    for lh in (state["lighthouses"]):
+        energias.append(lh["energy"])
+
+    energias.sort()
+    tamanio = len(energias)
+    mediana = 0
+    i = tamanio / 2
+    if i % 2 == 0:
+        a1 = energias.index(i)
+        a2 = energias.index(i - 1)
+        mediana = (a1 + a2) / 2
+    else:
+        mediana = energias.index(i)
+
     if lighthouse["energy"] == 0:
-        energia =  100
+        energia = 100
     else:
         energia_faro = lighthouse["energy"]
-        energia =  100 + energia_faro
+        energia = 100 + energia_faro
 
     return energia
 
@@ -97,10 +112,11 @@ class RandBot(interface.Bot):
 
                     if possible_connections:
                         return self.connect(random.choice(possible_connections))
+
             if lighthouses[(cx, cy)]["owner"] != self.player_num:
                 # Probabilidad 60%: recargar el faro
                 energy = decision_energy(state, lighthouses[(cx, cy)])
-                #energy = random.randrange(state["energy"] + 1)
+                # energy = random.randrange(state["energy"] + 1)
                 return self.attack(energy)
 
         move = decision_mov(cx, cy, state, self.player_num)
