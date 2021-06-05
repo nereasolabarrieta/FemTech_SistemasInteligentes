@@ -18,6 +18,7 @@ def decision_mov(cx, cy, state, player_num):
             if i["owner"] != player_num:
                 d_x1 = abs(cx - x_l)
                 d_y1 = abs(cy - y_l)
+                dist = 0
                 if d_x1 > d_y1:
                     dist = d_x1
                 else:
