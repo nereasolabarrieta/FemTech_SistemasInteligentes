@@ -101,9 +101,6 @@ class RandBot(interface.Bot):
                             lighthouses[dest]["owner"] == self.player_num):
                         possible_connections.append(dest)
                     if possible_connections:
-                        if len(possible_connections) > 1:
-                            return self.connect(possible_connections[0]) and self.connect(possible_connections[1])
-                        else:
                             return self.connect(possible_connections[0])
 
             if lighthouses[(cx, cy)]["owner"] != self.player_num:
