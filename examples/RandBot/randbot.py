@@ -10,7 +10,7 @@ import interface
 
 
 def decision_mov(cx, cy, state, player_num):
-    distancias = np.array([])
+    distancias = []
     for i in (state["lighthouses"]):
         x_l, y_l = i["position"]
         if x_l != cx or y_l != cy:
