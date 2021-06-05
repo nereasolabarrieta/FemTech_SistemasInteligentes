@@ -88,19 +88,18 @@ class RandBot(interface.Bot):
         if (cx, cy) in lighthouses:
             # Probabilidad 60%: conectar con faro remoto válido
             if lighthouses[(cx, cy)]["owner"] == self.player_num:
-                if random.randrange(100) < 60:
-                    possible_connections = []
-                    for dest in lighthouses:
-                        # No conectar con sigo mismo
-                        # No conectar si no tenemos la clave
-                        # No conectar si ya existe la conexión
-                        # No conectar si no controlamos el destino
-                        # Nota: no comprobamos si la conexión se cruza.
-                        if (dest != (cx, cy) and
-                                lighthouses[dest]["have_key"] and
-                                [cx, cy] not in lighthouses[dest]["connections"] and
-                                lighthouses[dest]["owner"] == self.player_num):
-                            possible_connections.append(dest)
+                possible_connections = []
+                for dest in lighthouses:
+                    # No conectar con sigo mismo
+                    # No conectar si no tenemos la clave
+                    # No conectar si ya existe la conexión
+                    # No conectar si no controlamos el destino
+                    # Nota: no comprobamos si la conexión se cruza.
+                    if (dest != (cx, cy) and
+                            lighthouses[dest]["have_key"] and
+                            [cx, cy] not in lighthouses[dest]["connections"] and
+                            lighthouses[dest]["owner"] == self.player_num):
+                        possible_connections.append(dest)
 
                     if possible_connections:
                         return self.connect(random.choice(possible_connections))
