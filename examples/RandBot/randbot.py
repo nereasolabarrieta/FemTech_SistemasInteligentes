@@ -97,7 +97,7 @@ class RandBot(interface.Bot):
 
                     if possible_connections:
                         return self.connect(random.choice(possible_connections))
-            if random.randrange(100) < 60:
+            if random.randrange(100) < 100:
                 # Probabilidad 60%: recargar el faro
                 energy = decision_energy(state, lighthouses[(cx, cy)])
                 #energy = random.randrange(state["energy"] + 1)
