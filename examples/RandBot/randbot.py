@@ -4,7 +4,7 @@ import json
 import math
 import random
 import sys
-
+import statistics as stats
 import numpy as np
 import interface
 
@@ -15,22 +15,14 @@ def decision_energy(state, lighthouse):
     for lh in (state["lighthouses"]):
         energias.append(lh["energy"])
 
-    energias.sort()
-    tamanio = len(energias)
-    mediana = 0
-    i = tamanio / 2
-    if i % 2 == 0:
-        a1 = energias.index(i)
-        a2 = energias.index(i - 1)
-        mediana = (a1 + a2) / 2
-    else:
-        mediana = energias.index(i)
+    energias = energias.sort()
+    mediana = stats.median(energias)
 
     if lighthouse["energy"] == 0:
-        energia = 100
+        energia = 100 + mediana
     else:
         energia_faro = lighthouse["energy"]
-        energia = 100 + energia_faro
+        energia = 100 + energia_faro + mediana
 
     return energia
 
